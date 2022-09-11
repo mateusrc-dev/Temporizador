@@ -1,0 +1,78 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-color: #121214;
+  --text-color: #FFFFFF;
+  --primary-color: hsl(var(--base-color), 100%, 63%);
+  --bg-primary-color: hsla(var(--base-color), 100%, 63%, 0.13);
+  --base-color: 194; /*criando essa variável podemos alterar a cor do projeto na hora que quisermos, alterar tanto a cor dos botões como do background dos botões*/
+  font-size: 62.5%;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Roboto', sans-serif;
+  display: grid; /*forma de organizar os elementos - desbloqueia propriedades que podem ser usadas nos containers que estão no body*/
+  min-height: 100vh; /*tem que aumentar o tamanho da largura pra colocar o place-content*/
+  /*place-content: center;*/
+}
+
+main {
+  justify-self: center; /*colocar os itens ao centro horizontalmente - essas duas propriedades (justify-self e align-self) são liberadas quando colocar display grid*/
+  align-self: end; /*colocar os itens ao centro verticalmente*/
+}
+
+button {
+  background-color: transparent; /*como os botões não tem fundo nem borda, está sendo retidado o fundo e a borda nesses comandos*/
+  border: none;
+  cursor: pointer;
+  transition: transform 0.5s;
+}
+
+button:hover {
+  transform: scale(1.2)
+}
+
+.hide { /*hide será uma classe usada no JS para fazer um elemendo aparecer e desaparecer*/
+  display: none;
+}
+
+.play svg path, .pause svg path, .sound-on svg path { /*svg é html, podemos acessar dentro dele a propriedade fill e alterar ela*/
+  fill: var(--primary-color);
+}
+
+button svg {
+  width: clamp(3.2rem, 2rem + 12vw, 6.4rem); /*alterando o tamanho dos buttons de acordo com a largura da tela*/
+}
+
+#timer {
+  font-size: clamp(3rem, 4rem + 10vw, 10.8rem);
+  /*margin-inline: auto; -> minha forma de deixar os elementos ao meio - professor usou o display grid
+  align-items: center;
+  justify-content: center;*/
+  display: flex; /*para deixar os elementos mais próximos um do outro - os números*/
+  margin-bottom: 1.6rem;
+}
+
+#controls {
+  display: flex;
+  justify-content: center; /*para deixar os itens ao centro*/
+  gap: 3.2rem;
+  background-color: var(--bg-primary-color);
+  border-radius: 999.9rem;
+  width: clamp(10rem, 10rem + 30vw, 30.8rem); /*primeiro argumento é o mínimo, segundo o ideal, terceiro o máximo - clamp é para deixar a medida flexível de acordo com o tamanho da tela*/
+  height: clamp(8rem, 3rem + 10vw, 10.8rem);
+  /*margin-inline: auto; - minha forma de deixar os controles no meio da tela - professor usou o grid*/
+} 
+
+footer {
+  /*professor usa as propriedades destravadas pelo grid para fazer alinhamento - poderiamos usar o position fixed também e usar top 0 e right 0*/
+  justify-self: end;
+  align-self: end;
+  padding: 0 4rem 3.2rem 0;
+}
